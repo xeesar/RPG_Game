@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Testovoe/Scene/Scene.unity
+    guid: f106a85bd9ab0c4408965b6ff5174d32
   m_configObjects: {}

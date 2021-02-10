@@ -23,6 +23,8 @@ namespace Models
         [Inject] private IInputManager m_inputManager = null;
         [Inject] private IUpdateManager m_updateManager = null;
 
+        public bool IsMoving => m_accelerationTime / m_accelerationDuration > 0;
+
         private float m_accelerationTime = 0f;
 
         private void Start()
@@ -40,7 +42,7 @@ namespace Models
             
             m_inputManager.EventOnAttacked -= OnAttack;
             m_inputManager.EventOnStrongAttacked -= OnStrongAttack;
-            m_updateManager.EventOnUpdate += OnUpdate;
+            m_updateManager.EventOnUpdate -= OnUpdate;
         }
 
         private void OnUpdate(float deltaTime)

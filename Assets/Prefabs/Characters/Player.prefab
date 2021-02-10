@@ -696,6 +696,7 @@ GameObject:
   - component: {fileID: 8205042287892667308}
   - component: {fileID: 8205042287884924006}
   - component: {fileID: 2546699335335358742}
+  - component: {fileID: 7100940283252777940}
   - component: {fileID: 5505909185333714788}
   - component: {fileID: 8246263509339140644}
   m_Layer: 0
@@ -756,6 +757,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &7100940283252777940
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8205042287892301772}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.29
+  m_Height: 1.8401908
+  m_Direction: 1
+  m_Center: {x: 0.000000253969, y: 0.91583717, z: -0.044673856}
 --- !u!114 &5505909185333714788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1009,7 +1024,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8205042287892667324}
   - component: {fileID: 8205042287880800934}
-  - component: {fileID: 5077889641454466131}
   m_Layer: 0
   m_Name: SK_CharM_Barbarous 1
   m_TagString: Untagged
@@ -1116,20 +1130,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.111073256, y: 0.03392204, z: 0.0000002682209}
     m_Extent: {x: 0.9192078, y: 0.24456283, z: 0.756426}
   m_DirtyAABB: 0
---- !u!136 &5077889641454466131
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8205042287892301788}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.29
-  m_Height: 1.8401908
-  m_Direction: 1
-  m_Center: {x: 0.000000253969, y: 0.91583717, z: -0.044673856}
 --- !u!1 &8205042287892301790
 GameObject:
   m_ObjectHideFlags: 0

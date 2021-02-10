@@ -18,18 +18,5 @@ namespace Models.Spawners
         public virtual void Dispose()
         {
         }
-
-        protected Vector3 GetRandomPosition()
-        {
-            Vector3 minPosition = m_levelMap.MinPosition;
-            Vector3 maxPosition = m_levelMap.MaxPosition;
-            Vector3 newPosition = Vector3.zero;
-            
-            newPosition.x = Random.Range(minPosition.x, maxPosition.x);
-            newPosition.y = minPosition.y;
-            newPosition.z = Random.Range(minPosition.z, maxPosition.z);
-
-            return newPosition;
-        }
     }
 }

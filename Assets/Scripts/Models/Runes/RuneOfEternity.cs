@@ -22,6 +22,8 @@ namespace Models.Runes
 
         private void OnCharacterAttacked()
         {
+            if(IsActivated) return;
+            
             float distance = Vector3.Distance(m_characterModel.transform.position, transform.position);
 
             if (distance < m_activationMinDistance)
