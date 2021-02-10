@@ -41,6 +41,8 @@ namespace View
         
         public void DisplayAttack(int type)
         {
+            m_animator.ResetTrigger(m_strongAttackHash);
+            
             m_animator.SetInteger(m_attackTypeHash, type);
             m_animator.SetTrigger(m_attackHash);
         }
