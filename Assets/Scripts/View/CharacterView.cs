@@ -14,6 +14,7 @@ namespace View
         private readonly int m_verticalMovementHash = Animator.StringToHash("VerticalMovement");
         private readonly int m_speedHash = Animator.StringToHash("Speed");
         private readonly int m_movingHash = Animator.StringToHash("IsMoving");
+        private readonly int m_jumpingHash = Animator.StringToHash("IsJumping");
 
         private readonly int m_attackTypeHash = Animator.StringToHash("AttackType");
         private readonly int m_attackHash = Animator.StringToHash("Attack");
@@ -50,6 +51,11 @@ namespace View
         public void DisplayStrongAttack()
         {
             m_animator.SetTrigger(m_strongAttackHash);
+        }
+
+        public void DisplayJump(bool isJumped)
+        {
+            m_animator.SetBool(m_jumpingHash, isJumped);
         }
     }
 }

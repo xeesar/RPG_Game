@@ -7,6 +7,7 @@ namespace Managers
     {
         public override event Action EventOnAttacked;
         public override event Action EventOnStrongAttacked;
+        public override event Action EventOnJumped;
 
         protected override void HandleMovement()
         {
@@ -29,6 +30,14 @@ namespace Managers
             if (Input.GetMouseButtonDown(1))
             {
                 EventOnStrongAttacked?.Invoke();
+            }
+        }
+
+        protected override void HandleJump()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                EventOnJumped?.Invoke();
             }
         }
     }   

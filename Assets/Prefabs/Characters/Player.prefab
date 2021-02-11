@@ -800,6 +800,10 @@ MonoBehaviour:
   m_characterView: {fileID: 5505909185333714788}
   m_cameraOffset: {x: 0, y: 2.62, z: -2.96}
   m_accelerationDuration: 1
+  m_groundingRaycastDistance: 0.0025
+  m_groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &8205042287892301774
 GameObject:
   m_ObjectHideFlags: 0

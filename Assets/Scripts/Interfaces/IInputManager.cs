@@ -6,6 +6,7 @@ namespace Interfaces
     {
         event Action EventOnAttacked;
         event Action EventOnStrongAttacked;
+        event Action EventOnJumped;
         
         float Horizontal { get; }
         float Vertical { get; }

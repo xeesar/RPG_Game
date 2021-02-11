@@ -18,12 +18,15 @@ namespace Models
         [Header("Options")]
         [SerializeField] private Vector3 m_cameraOffset = Vector3.zero;
         [SerializeField] private float m_accelerationDuration = 1f;
+        [SerializeField] private float m_groundingRaycastDistance = 0.1f;
+        [SerializeField] private LayerMask m_groundLayer;
 
         [Inject] private ICameraManager m_cameraManager = null;
         [Inject] private IInputManager m_inputManager = null;
         [Inject] private IUpdateManager m_updateManager = null;
 
         public bool IsMoving => m_accelerationTime / m_accelerationDuration > 0;
+        public bool IsJumped { get; private set; }
 
         private float m_accelerationTime = 0f;
 
@@ -33,6 +36,7 @@ namespace Models
             
             m_inputManager.EventOnAttacked += OnAttack;
             m_inputManager.EventOnStrongAttacked += OnStrongAttack;
+            m_inputManager.EventOnJumped += OnJumped;
             m_updateManager.EventOnUpdate += OnUpdate;
         }
 
@@ -42,13 +46,15 @@ namespace Models
             
             m_inputManager.EventOnAttacked -= OnAttack;
             m_inputManager.EventOnStrongAttacked -= OnStrongAttack;
+            m_inputManager.EventOnJumped -= OnJumped;
             m_updateManager.EventOnUpdate -= OnUpdate;
         }
 
         private void OnUpdate(float deltaTime)
         {
             HandleAcceleration(deltaTime);
-
+            HandleLanding();
+            
             m_characterView.DisplayMovement(m_inputManager.Horizontal, m_inputManager.Vertical);
             m_characterView.DisplaySpeed(m_accelerationTime / m_accelerationDuration);
             m_characterView.RotateTo(m_inputManager.MouseX);
@@ -58,6 +64,18 @@ namespace Models
         {
             m_accelerationTime = m_inputManager.IsInputHandled ? m_accelerationTime + deltaTime : 0;
             m_accelerationTime = Mathf.Clamp(m_accelerationTime, 0, m_accelerationDuration);
+        }
+
+        private void HandleLanding()
+        {
+            if(!IsJumped) return;
+
+            Ray ray = new Ray(transform.position, Vector3.down);
+            RaycastHit[] hits = Physics.RaycastAll(ray, m_groundingRaycastDistance, m_groundLayer);
+
+            IsJumped = hits.Length == 0;
+            
+            m_characterView.DisplayJump(IsJumped);
         }
         
         private void OnAttack()
@@ -69,6 +87,12 @@ namespace Models
         private void OnStrongAttack()
         {
             m_characterView.DisplayStrongAttack();
+        }
+
+        private void OnJumped()
+        {
+            IsJumped = true;
+            m_characterView.DisplayJump(IsJumped);
         }
 
         private void OnAttacked()

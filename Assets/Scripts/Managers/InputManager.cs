@@ -9,6 +9,7 @@ namespace Managers
     {
         public abstract event Action EventOnAttacked;
         public abstract event Action EventOnStrongAttacked;
+        public abstract event Action EventOnJumped;
 
         [SerializeField] protected float m_mouseXMultiplier = 1f;
         
@@ -34,10 +35,12 @@ namespace Managers
             HandleMovement();
             HandleMouse();
             HandleAttack();
+            HandleJump();
         }
 
         protected abstract void HandleMovement();
         protected abstract void HandleMouse();
         protected abstract void HandleAttack();
+        protected abstract void HandleJump();
     }
 }
